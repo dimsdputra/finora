@@ -43,7 +43,7 @@ const AmountInfo = ({
               totalBalance > 0 ? (
                 `Financial Health: `
               ) : (
-                `Warning: Overspent`
+                `Warning: `
               )
             ) : (
               <span className="text-base-content/70 font-semibold">
@@ -55,7 +55,7 @@ const AmountInfo = ({
                 totalBalance > 0 ? (
                   <span className="text-success font-semibold">Good</span>
                 ) : (
-                  <span className="text-error font-semibold">Good</span>
+                  <span className="text-error font-semibold">Overspent</span>
                 )
               ) : (
                 ""

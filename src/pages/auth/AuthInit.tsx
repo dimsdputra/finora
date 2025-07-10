@@ -1,6 +1,6 @@
 import { useEffect, type PropsWithChildren } from "react";
 import { useAuthStore, useLocationStore } from "../../store/authStore";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { getLocationDetails } from "../../api/user.api";
 import { getCurrency } from "../../helpers/locationHelpers";
 import { useQuery } from "@tanstack/react-query";
@@ -9,6 +9,7 @@ const AuthInit = ({ children }: PropsWithChildren) => {
   const { user } = useAuthStore();
   const { setLocation, location } = useLocationStore();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const { data } = useQuery<LocationDataType>({
     queryKey: ["locationDetails", location?.latitude, location?.longitude],
@@ -57,11 +58,17 @@ const AuthInit = ({ children }: PropsWithChildren) => {
   }, [location, data]);
 
   useEffect(() => {
-    if (!user) {
+    if (user === undefined) {
       // If user is not authenticated, redirect to sign-in page
       navigate("/auth/sign-in");
+    } else if (
+      user &&
+      (pathname === "/auth/sign-in" || pathname === "/auth/sign-up")
+    ) {
+      // If user is authenticated and trying to access auth pages, redirect to home
+      navigate("/dashboard");
     }
-  }, [user]);
+  }, [user, pathname]);
 
   return <>{children}</>;
 };

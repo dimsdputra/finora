@@ -39,6 +39,24 @@ const MenuView = (props: MenuViewProps) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    if (!isMobile || !isMenuOpen) return;
+
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        closeMenu();
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobile, isMenuOpen, closeMenu]);
+
   return (
     <div className="relative h-full w-full cursor-pointer">
       {isMobile && (
@@ -122,7 +140,7 @@ const MenuView = (props: MenuViewProps) => {
                   props.isActive(menuItem.path) ? "secondary" : "transparent"
                 }
                 className="w-full !justify-start"
-                onClick={() => props.navigate(menuItem.path)}
+                onClick={() => {props.navigate(menuItem.path); closeMenu();}}
                 key={menuItem.label}
               >
                 {menuItem.icon}

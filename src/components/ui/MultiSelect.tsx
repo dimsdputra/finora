@@ -52,6 +52,8 @@ function MultiSelect({
     } else {
       onChange([value]);
     }
+
+    setOpen(false);
   };
 
   const handleMultiSelect = (value: string) => {

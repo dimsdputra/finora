@@ -15,6 +15,7 @@ import ActionMenu from "../../../components/actionMenu";
 import useDialog from "../../../../hooks/useDialog";
 import { useCallback, useState } from "react";
 import ModalConfirmations from "../../../components/modal/ModalConfirmations";
+import classNames from "classnames";
 
 interface TableListProps {
   handleShowIncome: () => void;
@@ -109,7 +110,7 @@ const TableList = (props: TableListProps) => {
         ]}
         renderers={[
           (_, index) => (params.page - 1) * params.perPage + index + 1,
-          (row) => capitalizeWords(row.type ?? "-"),
+          (row) => <p className={classNames("border-b", row.type === 'income' ? "border-secondary" : "border-warning")}>{capitalizeWords(row.type ?? "-")}</p>,
           (row) => FormatCurrency(row.amount ?? 0, location?.currency),
           (row) => row.category?.categoryName ?? "-",
           (row) => (row.date ? format(row.date, "dd/MM/yyyy") : "-"),

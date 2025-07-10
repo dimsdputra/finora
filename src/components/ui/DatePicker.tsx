@@ -6,18 +6,39 @@ import { CalendarIcon } from "@heroicons/react/24/outline";
 import type { DateRange, DayPickerProps } from "react-day-picker";
 import { Controller, type Control, type Path } from "react-hook-form";
 import { Label } from "./Label";
+import { useState } from "react";
 
 function DatePicker(props: {
   mode: "single" | "range";
   selected: Date | DateRange | undefined;
   onSelect: (date: Date | DateRange | undefined) => void;
 }) {
+  const [open, setOpen] = useState(false);
+
+  const handleSelect = (date: Date | DateRange | undefined) => {
+    props.onSelect(date);
+    // Close popover if a date is selected
+    if (props.mode === "single" && date) {
+      setOpen(false);
+    }
+    if (
+      props.mode === "range" &&
+      date &&
+      (date as DateRange).from &&
+      (date as DateRange).to &&
+      (date as DateRange).from?.getTime() !== (date as DateRange).to?.getTime()
+    ) {
+      setOpen(false);
+    }
+  };
+
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
           data-empty={!props.selected}
+          onClick={() => setOpen((prev) => !prev)}
           className="data-[empty=true]:text-base-content/80 !justify-start text-left font-normal bg-base-100 border-[1px] hover:bg-base-100/70 min-h-9 h-fit w-full"
         >
           <CalendarIcon />
@@ -48,13 +69,13 @@ function DatePicker(props: {
           <Calendar
             mode="single"
             selected={props.selected as Date | undefined}
-            onSelect={props.onSelect as (date: Date | undefined) => void}
+            onSelect={handleSelect as (date: Date | undefined) => void}
           />
         ) : (
           <Calendar
             mode="range"
             selected={props.selected as DateRange | undefined}
-            onSelect={props.onSelect as (date: DateRange | undefined) => void}
+            onSelect={handleSelect as (date: DateRange | undefined) => void}
             required={false}
           />
         )}
@@ -77,11 +98,7 @@ function DatePickerForm<T extends { [key: string]: any }>({
 } & DayPickerProps) {
   return (
     <div className="relative w-auto" data-slot="wrapper">
-      {label && (
-        <Label className="mb-3">
-          {label}
-        </Label>
-      )}
+      {label && <Label className="mb-3">{label}</Label>}
       <Controller
         name={name}
         control={control}

@@ -50,8 +50,9 @@ const AddExpenseView = (props: AddExpenseViewProps & PropsWithChildren) => {
           <div className="flex flex-col gap-4">
             <Input
               name="amount"
-              label={`Amount Income (${location?.currency ?? "USD"})`}
-              type="number"
+              prefix={location?.currency ?? "USD"}
+              label={`Amount Expense (${location?.currency ?? "USD"})`}
+              type="currency"
               control={props.form.control}
               placeholder="Enter amount income..."
             />

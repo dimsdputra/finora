@@ -98,6 +98,16 @@ module.exports = {
           `rgba(var(--color-neutral-content), ${opacityValue ?? 1})`,
         "base-content": ({ opacityValue }) =>
           `rgba(var(--color-base-content), ${opacityValue ?? 1})`,
+        secondary: ({ opacityValue }) =>
+          `rgba(var(--color-secondary), ${opacityValue ?? 1})`,
+        info: ({ opacityValue }) =>
+          `rgba(var(--color-info), ${opacityValue ?? 1})`,
+        success: ({ opacityValue }) =>
+          `rgba(var(--color-success), ${opacityValue ?? 1})`,
+        warning: ({ opacityValue }) =>
+          `rgba(var(--color-warning), ${opacityValue ?? 1})`,
+        error: ({ opacityValue }) =>
+          `rgba(var(--color-error), ${opacityValue ?? 1})`,
       },
       ringColor: {
         "base-300": ({ opacityValue }) =>

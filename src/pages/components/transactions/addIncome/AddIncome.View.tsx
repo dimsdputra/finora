@@ -52,15 +52,16 @@ const AddIncomeView = (props: AddIncomeViewProps) => {
             <div className="flex flex-col gap-4">
               <Input
                 name="amount"
+                prefix={location?.currency ?? "USD"}
                 label={`Amount Income (${location?.currency ?? "USD"})`}
-                type="number"
+                type="currency"
                 control={props.form.control}
                 placeholder="Enter amount income..."
               />
               <DatePickerForm
                 name="date"
                 label="Date"
-                mode="single"
+                mode="range"
                 control={props.form.control}
               />
               <Input

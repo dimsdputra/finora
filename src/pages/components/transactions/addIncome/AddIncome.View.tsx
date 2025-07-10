@@ -61,7 +61,7 @@ const AddIncomeView = (props: AddIncomeViewProps) => {
               <DatePickerForm
                 name="date"
                 label="Date"
-                mode="range"
+                mode="single"
                 control={props.form.control}
               />
               <Input

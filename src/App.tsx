@@ -16,12 +16,8 @@ const App = () => {
   const { theme } = useThemeStore();
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div>
-        <h1>Hello Vercel!</h1>
-        <p>If you see this, my app is rendering!</p>
-      </div>
-      {/* <QueryClientProvider client={queryClient}>
-        <BrowserRouter basename={BASE_URL}>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
           <div className={theme}>
             <section className="bg-base-200 h-screen w-screen overflow-x-hidden overflow-y-auto custom-scrollbar">
               <LoadingProvider>
@@ -33,7 +29,7 @@ const App = () => {
             </section>
           </div>
         </BrowserRouter>
-      </QueryClientProvider> */}
+      </QueryClientProvider>
     </Suspense>
   );
 };

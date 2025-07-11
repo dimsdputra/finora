@@ -1,12 +1,12 @@
 import { useEffect, type PropsWithChildren } from "react";
 import { useAuthStore, useLocationStore } from "../../store/authStore";
 import { useLocation, useNavigate } from "react-router";
-import { getLocationDetails } from "../../api/user.api";
+import { getLocationDetails, useGetUserById } from "../../api/user.api";
 import { getCurrency } from "../../helpers/locationHelpers";
 import { useQuery } from "@tanstack/react-query";
 
 const AuthInit = ({ children }: PropsWithChildren) => {
-  const { user } = useAuthStore();
+  const { user, setUser } = useAuthStore();
   const { setLocation, location } = useLocationStore();
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -24,6 +24,8 @@ const AuthInit = ({ children }: PropsWithChildren) => {
       location?.longitude !== null &&
       location?.currency === undefined,
   });
+
+  const { data: userData } = useGetUserById(user?.uid);
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -56,6 +58,20 @@ const AuthInit = ({ children }: PropsWithChildren) => {
       });
     }
   }, [location, data]);
+
+  useEffect(() => {
+    if (user?.uid && userData && userData.length > 0) {
+      const userInfo = userData[0];
+      setUser({
+        displayName: userInfo.name ?? "",
+        bio: userInfo.bio ?? "",
+      });
+      setLocation({
+        ...location,
+        currency: userInfo.currency,
+      });
+    }
+  }, [userData, user?.uid]);
 
   useEffect(() => {
     if (user === undefined) {

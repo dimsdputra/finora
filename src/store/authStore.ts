@@ -3,8 +3,8 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface AuthState {
-  user: (User & { _id: string | undefined; bio: string | undefined }) | undefined;
-  setUser: (user?: User & { _id: string | undefined; bio: string | undefined }) => void;
+  user: (Partial<User> & { _id?: string; bio?: string }) | undefined;
+  setUser: (user?: Partial<User> & { _id?: string; bio?: string }) => void;
   setUserClear: () => void;
 }
 
@@ -12,8 +12,11 @@ export const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
       user: undefined,
-      setUser: (user) => set({ user }),
-      setUserClear: () => set({ user: undefined }),
+      setUser: (user) =>
+        set((prev) => ({
+          user: { ...prev.user, ...user }, // merge prev user with new user fields
+        })),
+      setUserClear: () => set((prev) => ({ user: undefined })),
     }),
     {
       name: "user-auth", // key in localStorage

@@ -57,11 +57,11 @@ const Input = <T extends { [key: string]: any }>({
                 ) : (
                   <CurrencyInput
                     prefix={`${props?.prefix ?? ""} `}
-                    data-number-to-fixed="4"
+                    data-number-to-fixed="2"
                     data-number-stepfactor="100"
                     placeholder={props.placeholder ?? "0.00"}
                     allowDecimals
-                    decimalsLimit={4}
+                    decimalsLimit={10}
                     disableAbbreviations
                     className={classNames(
                       "placeholder:text-xs !text-xs",
@@ -69,13 +69,11 @@ const Input = <T extends { [key: string]: any }>({
                       className,
                       props.icon ? "pr-10" : ""
                     )}
-                    {...field}
+                    // {...field}
                     value={field.value ?? ""}
-                    onChange={(e) => {
-                      e.preventDefault();
-                      const { value = "" } = e.target;
-                      const parsedValue = value.replace(/[^\d.]/gi, "");
-                      field.onChange(parsedValue)
+                    onValueChange={(value) => {
+                      console.log(value)
+                      field.onChange(value ?? "");
                     }}
                   />
                 )}

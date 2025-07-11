@@ -59,6 +59,33 @@ export const useGetLocation = (
   });
 };
 
+export const useGetUserById = (userId: string | undefined) => {
+  const { setLoading } = useLoading();
+  const userQuery = `*[_type == "user" && userId == $userId]`;
+
+  return useQuery<UserSettingDataType[]>({
+    queryKey: ["users", userId],
+    queryFn: async () => {
+      setLoading(true);
+      try {
+        if (!userId) {
+          return [];
+        }
+        const fetch = await sanityReadClient.fetch(userQuery, { userId });
+        return fetch;
+      } finally {
+        setLoading(false);
+      }
+    },
+    enabled: !!userId,
+    retry: 0,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    placeholderData: (prev) => prev,
+  });
+};
+
 export const useSignUpWithEmailAndPassword = () => {
   const navigate = useNavigate();
   const { setLoading } = useLoading();

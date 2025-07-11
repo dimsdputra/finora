@@ -24,16 +24,16 @@ interface AddIncomeOrExpenseCardProps {
 
 const AddIncomeOrExpenseCard = (props: AddIncomeOrExpenseCardProps) => {
   return (
-    <Card className="!p-0 !gap-0 w-full h-fit !bg-accent/5 ">
+    <Card className="!p-0 !gap-0 w-full h-fit !bg-secondary/10 ">
       <CardHeader className="gap-0 py-3 rounded-t-xl">
         <CardDescription className="flex items-center gap-2">
-          <PlusIcon className="w-4 h-4 mr-1 stroke-[4] fill-accent stroke-accent" />
-          <p className="text-base-content text-opacity-50">
+          <PlusIcon className="w-4 h-4 mr-1 stroke-[4] fill-accent stroke-secondary" />
+          <p className="text-base-content text-opacity-80">
             Add a New Expenses
           </p>
         </CardDescription>
       </CardHeader>
-      <CardContent className="rounded-xl bg-accent/20 py-6 sm:py-4 flex items-center justify-center gap-4">
+      <CardContent className="rounded-xl bg-secondary/20 py-6 sm:py-4 flex items-center justify-center gap-4">
         <div className="w-fit">
           <AddIncome
             mode={props.defaultDataIncome ? "edit" : "add"}

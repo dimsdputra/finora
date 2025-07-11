@@ -64,7 +64,7 @@ function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
     <thead
       data-slot="table-header"
       className={classNames(
-        "sticky top-0 z-10 [&_tr]:border-b bg-primary text-accent-content",
+        "sticky top-0 z-10 [&_tr]:border-b bg-base-300 text-base-content",
         className
       )}
       {...props}
@@ -103,7 +103,7 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
     <tr
       data-slot="table-row"
       className={classNames(
-        "hover:bg-base-100/50 data-[state=selected]:bg-base-100/50 border-b border-base-300 transition-colors",
+        "data-[state=selected]:bg-base-100/50 border-b border-base-300 transition-colors",
         className
       )}
       {...props}
@@ -116,7 +116,7 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
     <th
       data-slot="table-head"
       className={classNames(
-        "text-base-content h-10 py-2 px-4 text-xs text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+        "h-10 py-2 px-4 text-xs text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
         className
       )}
       {...props}
@@ -475,7 +475,7 @@ const Table = <T extends { [key in keyof T]: T[key] }>(
       </div>
       <TableContainer maxHeight={props.maxHeight}>
         <TableHeader>
-          <TableRow>
+          <TableRow className="hover:bg-base-100/5">
             {props.headers.map((header, index) => (
               <TableHead key={index} className={classNames(header.className)}>
                 {header.content ?? header.name}
@@ -486,7 +486,7 @@ const Table = <T extends { [key in keyof T]: T[key] }>(
         <TableBody>
           {props.data && props.data.length > 0 ? (
             props.data.map((row, index) => (
-              <TableRow key={index}>
+              <TableRow key={index} className="hover:bg-base-100/90">
                 {props.renderers.map((renderer, cellIndex) => (
                   <TableCell key={cellIndex}>
                     {renderer ? renderer(row, index) : "-"}

@@ -117,7 +117,7 @@ const CategoriesExpense = () => {
                     variant={"outline"}
                     className={classNames(
                       categoryExpenseActive === category.categoryName
-                        ? "!bg-info !text-info-content !transition-all !duration-300"
+                        ? "!bg-accent !text-accent-content !transition-all !duration-300"
                         : ""
                     )}
                     onClick={() =>
@@ -144,7 +144,7 @@ const CategoriesExpense = () => {
                 variant={"outline"}
                 className={classNames(
                   categoryExpenseActive === category.categoryName
-                    ? "!bg-info !text-info-content !transition-all !duration-300"
+                    ? "!bg-accent !text-accent-content !transition-all !duration-300"
                     : ""
                 )}
                 onClick={() => setCategoryExpenseActive(category.categoryName)}
@@ -176,7 +176,7 @@ const CategoriesExpense = () => {
                       variant={"outline"}
                       className={classNames(
                         selectYearExpense === item
-                          ? "!bg-info !text-info-content !transition-all !duration-300"
+                          ? "!bg-accent !text-accent-content !transition-all !duration-300"
                           : ""
                       )}
                       onClick={() => setSelectYearExpense(item)}
@@ -205,7 +205,7 @@ const CategoriesExpense = () => {
                       disabled={item !== "All" && selectYearExpense === "All"}
                       className={classNames(
                         filterMonthExpense === item
-                          ? "!bg-info !text-info-content !transition-all !duration-300"
+                          ? "!bg-accent !text-accent-content !transition-all !duration-300"
                           : ""
                       )}
                       onClick={() => setFilterMonthExpense(item)}

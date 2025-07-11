@@ -26,10 +26,15 @@ const AddExpenseView = (props: AddExpenseViewProps & PropsWithChildren) => {
   const { location } = useLocationStore();
 
   return (
-    <props.RenderDialog onOpenChange={() => props.setDefaultData?.(undefined)}>
+    <props.RenderDialog
+      onOpenChange={(open) => {
+        open === false && props.setDefaultData?.(undefined);
+        open === false && props.form.reset();
+      }}
+    >
       <DialogTrigger asChild className="w-full">
         <div className="cursor-pointer flex flex-col items-center gap-2 group min-w-full">
-          <div className="bg-warning/60 rounded-lg w-fit px-4 py-2 hover:cursor-pointer hover:bg-warning/40 transition-all duration-300 group-hover:bg-warning/40">
+          <div className="bg-warning rounded-lg w-fit px-4 py-2 hover:cursor-pointer hover:bg-warning/40 transition-all duration-300 group-hover:bg-warning/90">
             <DocumentMinusIcon className="w-6 h-6 stroke-white" />
           </div>
           <p className="text-base-content text-xs">

@@ -44,7 +44,7 @@ const CurrentExpenseCarousel = (props: CurrentTransactionCarouselProps) => {
             >
               <Card className="!p-2">
                 <CardContent className="!p-2">
-                  <div className="flex items-center justify-between bg-accent/20 rounded-lg w-full px-2 py-2">
+                  <div className={classNames("flex items-center justify-between rounded-lg w-full px-2 py-2", transaction.type === "income" ? "bg-secondary/50" : "bg-warning/50")}>
                     <p className="capitalize">
                       {transaction?._createdAt
                         ? `${transaction?.type} - ${format(

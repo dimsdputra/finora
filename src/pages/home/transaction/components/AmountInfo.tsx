@@ -34,7 +34,7 @@ const AmountInfo = ({
         <CardDescription
           className={classNames(
             "flex items-center justify-between sm:flex-col sm:items-start lg:flex-row lg:items-center lg:justify-between gap-2 px-2 py-1.5 rounded-md",
-            type === "income" ? "bg-accent/20" : "bg-warning/50"
+            type === "income" ? "bg-secondary/20" : "bg-warning/40"
           )}
         >
           <p className="text-base-content">Balances</p>

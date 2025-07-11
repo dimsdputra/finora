@@ -114,6 +114,8 @@ module.exports = {
           `rgba(var(--color-base-300), ${opacityValue ?? 1})`,
       },
       fill: {
+        "base-100": ({ opacityValue }) =>
+          `rgba(var(--color-base-100), ${opacityValue ?? 1})`,
         "accent-content": ({ opacityValue }) =>
           `rgba(var(--color-accent-content), ${opacityValue ?? 1})`,
         primary: ({ opacityValue }) =>
@@ -126,12 +128,18 @@ module.exports = {
           `rgba(var(--color-secondary), ${opacityValue ?? 1})`,
       },
       stroke: {
+        "base-100": ({ opacityValue }) =>
+          `rgba(var(--color-base-100), ${opacityValue ?? 1})`,
         "base-content": ({ opacityValue }) =>
           `rgba(var(--color-base-content), ${opacityValue ?? 1})`,
         primary: ({ opacityValue }) =>
           `rgba(var(--color-primary), ${opacityValue ?? 1})`,
+        "primary-content": ({ opacityValue }) =>
+          `rgba(var(--color-primary-content), ${opacityValue ?? 1})`,
         secondary: ({ opacityValue }) =>
           `rgba(var(--color-secondary), ${opacityValue ?? 1})`,
+        "secondary-content": ({ opacityValue }) =>
+          `rgba(var(--color-secondary-content), ${opacityValue ?? 1})`,
         accent: ({ opacityValue }) =>
           `rgba(var(--color-accent), ${opacityValue ?? 1})`,
         "accent-content": ({ opacityValue }) =>
@@ -140,6 +148,8 @@ module.exports = {
           `rgba(var(--color-info), ${opacityValue ?? 1})`,
         success: ({ opacityValue }) =>
           `rgba(var(--color-success), ${opacityValue ?? 1})`,
+        "success-content": ({ opacityValue }) =>
+          `rgba(var(--color-success-content), ${opacityValue ?? 1})`,
         warning: ({ opacityValue }) =>
           `rgba(var(--color-warning), ${opacityValue ?? 1})`,
         error: ({ opacityValue }) =>

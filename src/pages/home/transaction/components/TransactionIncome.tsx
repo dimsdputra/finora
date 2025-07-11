@@ -123,7 +123,7 @@ const TransactionIncome = () => {
                 variant={"outline"}
                 className={classNames(
                   selectYearIncome === item
-                    ? "!bg-info !text-info-content !transition-all !duration-300"
+                    ? "!bg-accent !text-accent-content !transition-all !duration-300"
                     : ""
                 )}
                 onClick={() => setSelectYearIncome(item)}
@@ -152,7 +152,7 @@ const TransactionIncome = () => {
                 disabled={item !== "All" && selectYearIncome === "All"}
                 className={classNames(
                   filterMonthIncome === item
-                    ? "!bg-info !text-info-content !transition-all !duration-300"
+                    ? "!bg-accent !text-accent-content !transition-all !duration-300"
                     : ""
                 )}
                 onClick={() => setFilterMonthIncome(item)}

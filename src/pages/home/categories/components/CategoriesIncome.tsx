@@ -118,7 +118,7 @@ const CategoriesIncome = () => {
                     variant={"outline"}
                     className={classNames(
                       categoryIncomeActive === category.categoryName
-                        ? "!bg-info !text-info-content !transition-all !duration-300"
+                        ? "!bg-accent !text-accent-content !transition-all !duration-300"
                         : ""
                     )}
                     onClick={() =>
@@ -145,7 +145,7 @@ const CategoriesIncome = () => {
                 variant={"outline"}
                 className={classNames(
                   categoryIncomeActive === category.categoryName
-                    ? "!bg-info !text-info-content !transition-all !duration-300"
+                    ? "!bg-accent !text-accent-content !transition-all !duration-300"
                     : ""
                 )}
                 onClick={() => setCategoryIncomeActive(category.categoryName)}
@@ -177,7 +177,7 @@ const CategoriesIncome = () => {
                       variant={"outline"}
                       className={classNames(
                         selectYearIncome === item
-                          ? "!bg-info !text-info-content !transition-all !duration-300"
+                          ? "!bg-accent !text-accent-content !transition-all !duration-300"
                           : ""
                       )}
                       onClick={() => setSelectYearIncome(item)}
@@ -206,7 +206,7 @@ const CategoriesIncome = () => {
                       disabled={item !== "All" && selectYearIncome === "All"}
                       className={classNames(
                         filterMonthIncome === item
-                          ? "!bg-info !text-info-content !transition-all !duration-300"
+                          ? "!bg-accent !text-accent-content !transition-all !duration-300"
                           : ""
                       )}
                       onClick={() => setFilterMonthIncome(item)}

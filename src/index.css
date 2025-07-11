@@ -11,10 +11,10 @@
     --color-base-200: 240, 240, 240;
     --color-base-300: 228, 228, 228;
     --color-base-content: 22, 22, 22;
-    --color-primary: 122, 204, 0;
-    --color-primary-content: 245, 252, 229;
-    --color-secondary: 0, 182, 217;
-    --color-secondary-content: 235, 253, 254;
+    --color-primary: 0, 182, 217;
+    --color-primary-content: 235, 253, 254;
+    --color-secondary: 122, 204, 0;
+    --color-secondary-content: 245, 252, 229;
     --color-accent: 249, 151, 0;
     --color-accent-content: 253, 249, 232;
     --color-neutral: 22, 22, 22;
@@ -27,8 +27,8 @@
     --color-warning-content: 67, 23, 0;
     --color-error: 255, 99, 125;
     --color-error-content: 77, 2, 24;
-    --chart-primary: oklch(76% 0.233 130.85);
-    --chart-secondary: oklch(71% 0.143 215.221);
+    --chart-primary: oklch(71% 0.143 215.221);
+    --chart-secondary: oklch(76% 0.233 130.85);
     --chart-accent: oklch(76% 0.188 70.08);
     --chart-neutral: oklch(20% 0 0);
     --chart-info: oklch(74% 0.16 232.661);

@@ -122,7 +122,7 @@ const TransactionExpense = () => {
                 variant={"outline"}
                 className={classNames(
                   selectYearExpense === item
-                    ? "!bg-info !text-info-content !transition-all !duration-300"
+                    ? "!bg-accent !text-accent-content !transition-all !duration-300"
                     : ""
                 )}
                 onClick={() => setSelectYearExpense(item)}
@@ -151,7 +151,7 @@ const TransactionExpense = () => {
                 disabled={item !== "All" && selectYearExpense === "All"}
                 className={classNames(
                   filterMonthExpense === item
-                    ? "!bg-info !text-info-content !transition-all !duration-300"
+                    ? "!bg-accent !text-accent-content !transition-all !duration-300"
                     : ""
                 )}
                 onClick={() => setFilterMonthExpense(item)}

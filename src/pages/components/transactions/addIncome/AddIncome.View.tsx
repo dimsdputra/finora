@@ -27,12 +27,15 @@ const AddIncomeView = (props: AddIncomeViewProps) => {
   return (
     <>
       <props.RenderDialog
-        onOpenChange={() => props.setDefaultData?.(undefined)}
+        onOpenChange={(open) => {
+          open === false && props.setDefaultData?.(undefined);
+          open === false && props.form.reset();
+        }}
       >
         <DialogTrigger asChild className="w-full">
           <div className="cursor-pointer flex flex-col items-center gap-2 group min-w-full">
-            <div className="bg-accent/80 rounded-lg w-fit px-4 py-2 hover:cursor-pointer transition-all duration-300 group-hover:bg-accent/50">
-              <DocumentPlusIcon className="w-6 h-6 stroke-base-content" />
+            <div className="bg-secondary rounded-lg w-fit px-4 py-2 hover:cursor-pointer transition-all duration-300 group-hover:bg-secondary/80">
+              <DocumentPlusIcon className="w-6 h-6 stroke-secondary-content" />
             </div>
             <p className="text-base-content text-xs">
               {props.mode === "add" ? "Add" : "Edit"} Income

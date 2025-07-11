@@ -69,10 +69,8 @@ const Input = <T extends { [key: string]: any }>({
                       className,
                       props.icon ? "pr-10" : ""
                     )}
-                    // {...field}
                     value={field.value ?? ""}
                     onValueChange={(value) => {
-                      console.log(value)
                       field.onChange(value ?? "");
                     }}
                   />

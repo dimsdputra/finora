@@ -23,7 +23,7 @@ const AddTransactions = (props: AddTransactionsProps) => {
     <Card
       className={classNames(
         "!p-0 !gap-0 w-full h-full",
-        props.mode === "income" ? "!bg-accent/15" : "!bg-warning/50"
+        props.mode === "income" ? "!bg-secondary/20" : "!bg-warning/20"
       )}
     >
       <CardHeader className="gap-0 py-3 rounded-t-xl">
@@ -32,7 +32,7 @@ const AddTransactions = (props: AddTransactionsProps) => {
             className={classNames(
               "w-4 h-4 mr-1 stroke-[4]",
               props.mode === "income"
-                ? "fill-accent stroke-accent"
+                ? "fill-secondary stroke-secondary"
                 : "fill-warning stroke-white"
             )}
           />
@@ -44,7 +44,7 @@ const AddTransactions = (props: AddTransactionsProps) => {
       <CardContent
         className={classNames(
           "rounded-xl py-6 sm:py-4 flex items-center justify-center w-full h-full",
-          props.mode === "income" ? "bg-accent/50" : "bg-warning/60"
+          props.mode === "income" ? "bg-secondary/20" : "bg-warning/40"
         )}
       >
         {props.mode === "income" ? (

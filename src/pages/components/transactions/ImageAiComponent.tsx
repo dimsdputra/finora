@@ -61,7 +61,7 @@ const ImageAiComponent = (props: ImageAiComponentProps) => {
 
         const prompt = `Can you analyze the receipt from the image?
         analysis:
-          - date: the date of the receipt, e.g., "2024-01-01" or "01/01/2024" or "January 1, 2024" or "1st January 2024" or "2024-01-01T00:00:00Z" or "09-01-24" means "date-month-year" or "2024-01-09",
+          - date: the date of the receipt, e.g., "2024-01-01" or "01/01/2024" or "January 1, 2024" or "1st January 2024" or "2024-01-01T00:00:00Z" or "09-01-24" that means "date-month-year" or "2024-01-09",
           - total: the total purchase,
           - category: analyze the category, whether it is "Education" or "Entertainment" or "Food \u0026 Drinks" or "Gifts \u0026 Donations" or "Healthcare" or "Household" or "Insurance" or "Loan Payments" or "Other Expenses" or "Rent/Mortgage" or "Shopping" or "Subscriptions" or "Transportation" or "Travel" or "Utilities",
           - description: match the results from the category

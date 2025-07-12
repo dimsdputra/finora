@@ -74,7 +74,11 @@ const AuthInit = ({ children }: PropsWithChildren) => {
   }, [userData, user?.uid]);
 
   useEffect(() => {
-    if (user === undefined) {
+    if (
+      user === undefined &&
+      pathname !== "/auth/sign-in" &&
+      pathname !== "/auth/sign-up"
+    ) {
       // If user is not authenticated, redirect to sign-in page
       navigate("/auth/sign-in");
     } else if (

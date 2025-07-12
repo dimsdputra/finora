@@ -27,6 +27,7 @@ export interface AddIncomeProps {
     onOpenChange,
     ...props
   }: DialogProps) => JSX.Element;
+  show?: boolean;
 }
 
 const AddIncome = (props: AddIncomeProps) => {
@@ -38,8 +39,12 @@ const AddIncome = (props: AddIncomeProps) => {
   });
 
   useEffect(() => {
-    form.reset(AddIncomeFormDefaultValues(props.data) as AddIncomeFormType);
-  }, [props.data]);
+    if (props.show) {
+      form.reset(AddIncomeFormDefaultValues(props.data) as AddIncomeFormType);
+    } else {
+      props.setDefaultData?.(undefined);
+    }
+  }, [props.data, form, props.show]);
 
   const createIncome = useCreateIncomeMutation();
   const updateIncome = useUpdateIncomeMutation();

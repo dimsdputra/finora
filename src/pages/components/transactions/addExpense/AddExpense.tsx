@@ -1,4 +1,4 @@
-import { useEffect, type PropsWithChildren } from "react";
+import { useEffect, useState, type PropsWithChildren } from "react";
 import AddExpenseView from "./AddExpense.View";
 import { useGetCategories } from "../../../../api/categories.api";
 import { useForm } from "react-hook-form";
@@ -32,8 +32,12 @@ const AddExpense = (props: AddExpenseProps & PropsWithChildren) => {
   });
 
   useEffect(() => {
-    form.reset(AddExpenseFormDefaultValues(props.data) as AddExpenseFormType);
-  }, [props.data]);
+    if (props.show) {
+      form.reset(AddExpenseFormDefaultValues(props.data) as AddExpenseFormType);
+    } else {
+      props.setDefaultData?.(undefined);
+    }
+  }, [props.data, form, props.show]);
 
   const createExpense = useCreateExpenseMutation();
   const updateExpense = useUpdateExpenseMutation();
@@ -42,7 +46,9 @@ const AddExpense = (props: AddExpenseProps & PropsWithChildren) => {
     const formValues = expenseForm({ ...value, userId: user?._id ?? "" });
 
     if (props.mode === "add") {
-      createExpense.mutate(formValues, { onSuccess: () => props.handleClose() });
+      createExpense.mutate(formValues, {
+        onSuccess: () => props.handleClose(),
+      });
     } else {
       updateExpense.mutate(
         {

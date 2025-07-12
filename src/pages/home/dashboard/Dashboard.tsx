@@ -15,12 +15,14 @@ const Dashboard = () => {
     RenderDialog: RenderDialogIncome,
     handleShow: handleShowIncome,
     handleClose: handleCloseIncome,
+    show: showIncome,
   } = useDialog();
 
   const {
     RenderDialog: RenderDialogExpense,
     handleShow: handleShowExpense,
     handleClose: handleCloseExpense,
+    show: showExpense,
   } = useDialog();
 
   return (
@@ -30,11 +32,13 @@ const Dashboard = () => {
           RenderDialog: RenderDialogIncome,
           handleShow: handleShowIncome,
           handleClose: handleCloseIncome,
+          show: showIncome,
         }}
         dialogExpense={{
           RenderDialog: RenderDialogExpense,
           handleShow: handleShowExpense,
           handleClose: handleCloseExpense,
+          show: showExpense,
         }}
         defaultDataIncome={defaultDataIncome}
         setDefaultDataIncome={setDefaultDataIncome}

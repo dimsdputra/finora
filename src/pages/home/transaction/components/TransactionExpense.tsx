@@ -24,7 +24,7 @@ import {
 } from "../../../../api/monthlyBalances.api";
 
 const TransactionExpense = () => {
-  const { RenderDialog, handleShow, handleClose } = useDialog();
+  const { RenderDialog, handleShow, handleClose, show } = useDialog();
 
   const [defaultDataExpense, setDefaultDataExpense] = useState<
     TransactionsDataType | undefined
@@ -167,7 +167,11 @@ const TransactionExpense = () => {
       <div className="grid grid-cols-6 lg:grid-cols-7 gap-4 mt-4">
         <div className="col-span-6 lg:col-span-3 flex flex-col md:flex-row lg:flex-col gap-4 lg:pl-4 lg:border-l border-base-content">
           <div className="md:w-1/2 lg:w-full flex flex-col sm:flex-row md:flex-col xl:flex-row gap-4">
-            <AmountInfo dataExpense={dataExpense} dataIncome={dataIncome} type="expense" />
+            <AmountInfo
+              dataExpense={dataExpense}
+              dataIncome={dataIncome}
+              type="expense"
+            />
             <AddTransactions
               mode={"expense"}
               RenderDialog={RenderDialog}
@@ -175,6 +179,7 @@ const TransactionExpense = () => {
               handleClose={handleClose}
               defaultData={defaultDataExpense}
               setDefaultData={setDefaultDataExpense}
+              show={show}
             />
           </div>
           <div className="w-full">

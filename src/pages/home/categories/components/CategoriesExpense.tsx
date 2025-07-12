@@ -21,7 +21,7 @@ import useDialog from "../../../../hooks/useDialog";
 import AddExpense from "../../../components/transactions/addExpense";
 
 const CategoriesExpense = () => {
-  const { RenderDialog, handleShow, handleClose } = useDialog();
+  const { RenderDialog, handleShow, handleClose, show } = useDialog();
 
   const [defaultDataExpense, setDefaultDataExpense] = useState<
     TransactionsDataType | undefined
@@ -104,6 +104,7 @@ const CategoriesExpense = () => {
           RenderDialog={RenderDialog}
           handleShow={handleShow}
           handleClose={handleClose}
+          show={show}
         />
       </div>
       <TabsContent value={"expense"}>

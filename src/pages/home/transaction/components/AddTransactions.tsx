@@ -55,6 +55,7 @@ const AddTransactions = (props: AddTransactionsProps) => {
             RenderDialog={props.RenderDialog}
             handleShow={props.handleShow}
             handleClose={props.handleClose}
+            show={props.show}
           />
         ) : (
           <>
@@ -65,6 +66,7 @@ const AddTransactions = (props: AddTransactionsProps) => {
               handleClose={props.handleClose}
               data={props.defaultData}
               setDefaultData={props.setDefaultData}
+              show={props.show}
             />
           </>
         )}

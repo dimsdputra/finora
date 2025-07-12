@@ -26,12 +26,7 @@ const AddIncomeView = (props: AddIncomeViewProps) => {
 
   return (
     <>
-      <props.RenderDialog
-        onOpenChange={(open) => {
-          open === false && props.setDefaultData?.(undefined);
-          open === false && props.form.reset();
-        }}
-      >
+      <props.RenderDialog>
         <DialogTrigger asChild className="w-full">
           <div className="cursor-pointer flex flex-col items-center gap-2 group min-w-full">
             <div className="bg-secondary rounded-lg w-fit px-4 py-2 hover:cursor-pointer transition-all duration-300 group-hover:bg-secondary/80">
@@ -95,7 +90,6 @@ const AddIncomeView = (props: AddIncomeViewProps) => {
                 variant="error"
                 onClick={() => {
                   props.handleClose();
-                  props.setDefaultData?.(undefined);
                 }}
               >
                 Cancel

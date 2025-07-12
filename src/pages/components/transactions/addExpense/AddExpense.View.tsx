@@ -11,10 +11,13 @@ import {
 import { Input } from "../../../../components/ui/Input";
 import { SelectForm } from "../../../../components/ui/MultiSelect";
 import { Button } from "../../../../components/ui/Button";
-import type { PropsWithChildren } from "react";
+import { useRef, useState, type PropsWithChildren } from "react";
 import { useLocationStore } from "../../../../store/authStore";
 import { DatePickerForm } from "../../../../components/ui/DatePicker";
 import { DocumentMinusIcon } from "@heroicons/react/24/outline";
+import { GoogleGenAI } from "@google/genai";
+import useLoading from "../../../../hooks/useLoading";
+import ImageAiComponent from "../ImageAiComponent";
 
 interface AddExpenseViewProps extends AddExpenseProps {
   form: UseFormReturn<AddExpenseFormType, any, AddExpenseFormType>;
@@ -26,12 +29,7 @@ const AddExpenseView = (props: AddExpenseViewProps & PropsWithChildren) => {
   const { location } = useLocationStore();
 
   return (
-    <props.RenderDialog
-      onOpenChange={(open) => {
-        open === false && props.setDefaultData?.(undefined);
-        open === false && props.form.reset();
-      }}
-    >
+    <props.RenderDialog>
       <DialogTrigger asChild className="w-full">
         <div className="cursor-pointer flex flex-col items-center gap-2 group min-w-full">
           <div className="bg-warning rounded-lg w-fit px-4 py-2 hover:cursor-pointer hover:bg-warning/40 transition-all duration-300 group-hover:bg-warning/90">
@@ -53,6 +51,10 @@ const AddExpenseView = (props: AddExpenseViewProps & PropsWithChildren) => {
           onSubmit={props.form.handleSubmit(props.handleAddExpense)}
         >
           <div className="flex flex-col gap-4">
+            <ImageAiComponent
+              form={props.form}
+              categoryData={props.categoryData}
+            />
             <Input
               name="amount"
               prefix={location?.currency ?? "USD"}
@@ -95,7 +97,6 @@ const AddExpenseView = (props: AddExpenseViewProps & PropsWithChildren) => {
               variant="error"
               onClick={() => {
                 props.handleClose();
-                props.setDefaultData?.(undefined);
               }}
             >
               Cancel

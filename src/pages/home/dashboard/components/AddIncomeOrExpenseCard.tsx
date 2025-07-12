@@ -42,6 +42,7 @@ const AddIncomeOrExpenseCard = (props: AddIncomeOrExpenseCardProps) => {
             RenderDialog={props.dialogIncome.RenderDialog}
             handleShow={props.dialogIncome.handleShow}
             handleClose={props.dialogIncome.handleClose}
+            show={props.dialogIncome.show}
           />
         </div>
         <div className="w-fit">
@@ -52,20 +53,9 @@ const AddIncomeOrExpenseCard = (props: AddIncomeOrExpenseCardProps) => {
             RenderDialog={props.dialogExpense.RenderDialog}
             handleShow={props.dialogExpense.handleShow}
             handleClose={props.dialogExpense.handleClose}
+            show={props.dialogExpense.show}
           />
         </div>
-        {/* <div className="cursor-pointer flex flex-col items-center gap-2 group">
-          <div className="bg-accent/20 rounded-lg w-fit px-4 py-2 hover:cursor-pointer transition-all duration-300 group-hover:bg-accent/15">
-            <DocumentPlusIcon className="w-6 h-6 stroke-accent" />
-          </div>
-          <p className="text-accent/content text-xs">Add Income</p>
-        </div> */}
-        {/* <div className="cursor-pointer flex flex-col items-center gap-2 group">
-          <div className="bg-accent/20 rounded-lg w-fit px-4 py-2 hover:cursor-pointer hover:bg-accent/15 transition-all duration-300 group-hover:bg-accent/15">
-            <DocumentMinusIcon className="w-6 h-6 stroke-accent" />
-          </div>
-          <p className="text-accent/content text-xs">Add Expense</p>
-        </div> */}
       </CardContent>
     </Card>
   );

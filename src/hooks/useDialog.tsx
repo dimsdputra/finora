@@ -6,6 +6,7 @@ export interface UseDialogReturn {
     handleClose: () => void;
     handleShow: () => void;
     RenderDialog: (props: DialogProps) => JSX.Element;
+    show?: boolean;
 }
 
 const useDialog = () => {
@@ -18,9 +19,9 @@ const useDialog = () => {
     return (
       <Dialog
         open={show}
-        onOpenChange={() => {
-          setShow((prev) => !prev);
-          onOpenChange?.(show);
+        onOpenChange={(e) => {
+          setShow(e);
+          onOpenChange?.(e);
         }}
         {...props}
       >
@@ -28,7 +29,7 @@ const useDialog = () => {
       </Dialog>
     );
   };
-  return { handleClose, handleShow, RenderDialog };
+  return { handleClose, handleShow, RenderDialog, show };
 };
 
 export default useDialog;

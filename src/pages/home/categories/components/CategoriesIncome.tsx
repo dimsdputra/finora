@@ -21,7 +21,7 @@ import useDialog from "../../../../hooks/useDialog";
 import AddIncome from "../../../components/transactions/addIncome";
 
 const CategoriesIncome = () => {
-  const { RenderDialog, handleShow, handleClose } = useDialog();
+  const { RenderDialog, handleShow, handleClose, show } = useDialog();
 
   const [defaultDataIncome, setDefaultDataIncome] = useState<
     TransactionsDataType | undefined
@@ -105,6 +105,7 @@ const CategoriesIncome = () => {
           RenderDialog={RenderDialog}
           handleShow={handleShow}
           handleClose={handleClose}
+          show={show}
         />
       </div>
       <TabsContent value={"income"}>

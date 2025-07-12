@@ -24,7 +24,7 @@ import {
 } from "../../../../api/monthlyBalances.api";
 
 const TransactionIncome = () => {
-  const { RenderDialog, handleShow, handleClose } = useDialog();
+  const { RenderDialog, handleShow, handleClose, show } = useDialog();
 
   const [defaultDataIncome, setDefaultDataIncome] = useState<
     TransactionsDataType | undefined
@@ -176,6 +176,7 @@ const TransactionIncome = () => {
               handleClose={handleClose}
               defaultData={defaultDataIncome}
               setDefaultData={setDefaultDataIncome}
+              show={show}
             />
           </div>
           <div className="w-full">
